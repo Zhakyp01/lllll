@@ -1,0 +1,16 @@
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: {{ include "helmlunara.fullname" . }}-letsencrypt-staging
+  labels:
+  {{- include "helmlunara.labels" . | nindent 4 }}
+spec:
+  acme:
+    email: kurbanaliev.mintemir@gmail.com
+    privateKeySecretRef:
+      name: lunara
+    server: https://acme-v02.api.letsencrypt.org/directory
+    solvers:
+    - http01:
+        ingress:
+          class: nginx

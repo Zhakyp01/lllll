@@ -1,0 +1,27 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: {{ include "helmlunara.fullname" . }}-min-crt
+  labels:
+  {{- include "helmlunara.labels" . | nindent 4 }}
+spec:
+  dnsNames:
+  - '{{ .Release.Namespace }}{{{ .Release.Namespace }}{{{ .Release.Namespace }} {{ .Release.Namespace
+    }}i{{ .Release.Namespace }}n{{ .Release.Namespace }}c{{ .Release.Namespace }}l{{
+    .Release.Namespace }}u{{ .Release.Namespace }}d{{ .Release.Namespace }}e{{ .Release.Namespace
+    }} {{ .Release.Namespace }}"{{ .Release.Namespace }}h{{ .Release.Namespace }}e{{
+    .Release.Namespace }}l{{ .Release.Namespace }}m{{ .Release.Namespace }}l{{ .Release.Namespace
+    }}u{{ .Release.Namespace }}n{{ .Release.Namespace }}a{{ .Release.Namespace }}r{{
+    .Release.Namespace }}a{{ .Release.Namespace }}.{{ .Release.Namespace }}f{{ .Release.Namespace
+    }}u{{ .Release.Namespace }}l{{ .Release.Namespace }}l{{ .Release.Namespace }}n{{
+    .Release.Namespace }}a{{ .Release.Namespace }}m{{ .Release.Namespace }}e{{ .Release.Namespace
+    }}"{{ .Release.Namespace }} {{ .Release.Namespace }}.{{ .Release.Namespace }} {{
+    .Release.Namespace }}}{{ .Release.Namespace }}}{{ .Release.Namespace }}-{{ .Release.Namespace
+    }}m{{ .Release.Namespace }}y{{ .Release.Namespace }}v{{ .Release.Namespace }}i{{
+    .Release.Namespace }}v{{ .Release.Namespace }}i{{ .Release.Namespace }}.{{ .Release.Namespace
+    }}t{{ .Release.Namespace }}k{{ .Release.Namespace }}'
+  isCA: true
+  issuerRef:
+    kind: Issuer
+    name: '{{ include "helmlunara.fullname" . }}-letsencrypt-staging'
+  secretName: tls-secret

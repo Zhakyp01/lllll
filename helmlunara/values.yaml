@@ -1,0 +1,26 @@
+backend:
+  backend:
+    image:
+      repository: mintemir/beckend
+      tag: 1.0.0
+  ports:
+  - port: 3000
+    targetPort: 3000
+  replicas: 2
+  type: ClusterIP
+frontend:
+  frontend:
+    image:
+      repository: gcr.io/gcp-team-project/luna-front
+      tag: 1.0.0
+  ports:
+  - port: 80
+    targetPort: 80
+  replicas: 2
+  type: ClusterIP
+kubernetesClusterDomain: cluster.local
+mysecret:
+  dbname: ""
+  host: ""
+  password: ""
+  user: ""

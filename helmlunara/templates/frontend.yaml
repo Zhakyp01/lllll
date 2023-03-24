@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "helmlunara.fullname" . }}-frontend
+  labels:
+  {{- include "helmlunara.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.frontend.type }}
+  selector:
+    app: frontend
+  {{- include "helmlunara.selectorLabels" . | nindent 4 }}
+  ports:
+	{{- .Values.frontend.ports | toYaml | nindent 2 -}}
